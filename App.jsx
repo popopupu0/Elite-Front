@@ -1,30 +1,53 @@
 import React, {useState} from 'react';
 import { View, Text, SafeAreaView, StyleSheet, Button, TextInput, Image, TouchableOpacity, FlatList } from 'react-native';
 
+const userlist = ([
+    {profile_list: '1'},
+    {profile_list: '2'},
+    {profile_list: '3'},
+    {profile_list: '4'},
+]);
+
 const App = () => {
 
     return (
         <SafeAreaView style={style.body}>
-            <View style={style.view1}>
-                <Image source={require('./assets/images/pro_pic.png')} style={{width: 145, height: 145}}/>
-            </View>
-            <View style={style.view2}>
-                <Text style={style.text1}>Firstname</Text>
-                <Text style={style.text1}>Lastname</Text>
-            </View>
-            <View style={style.view3}>
-                <Text style={style.text2_1}>จำนวนเงินคงเหลือ</Text>
-                <Text style={style.text2_2}>900</Text>
-            </View>
-            <View style={style.view4}>
-                <Text style={style.text3}>50 เครดิต/ชม.</Text>
-                <Text style={style.text3}>4 ชม.</Text>
-            </View>
-            <View style={style.view5}>
-                <TouchableOpacity style={style.button}>
-                    <Text style={style.text_button}>จ่ายเงิน 200 เครดิต</Text>
+            <View style={style.header}>
+                <TouchableOpacity style={Style_header.button}>
+                        <Image source={require('./assets/images/icons/back.png')} resizeMode='contain' style={{width: 30, height: 30,}}/>
                 </TouchableOpacity>
+                <View style={Style_header.view1}>
+                    <View>
+                        <Text style={Style_header.font}>รายชื่อพนักงาน</Text>
+                    </View>
+                </View>
             </View>
+
+            <View style={style.view1}>
+                <Text style={style.text1_1}>ตี๋น้อย 111 พหล - </Text>
+                <Text style={style.text1_2}>พนักงานเสิร์ฟ</Text>
+            </View>
+
+            <FlatList
+                keyExtractor={(item, index) => index.toString()}
+                data={userlist}
+                renderItem={({ item }) => (
+                    <View style={style.list}>
+                        <View style={style.profile}>
+                            <Image source={require('./assets/images/pro_pic.png')} resizeMode='contain' style={{ width: 80, height: 80,}}/>
+                            <TouchableOpacity style={style.button1}>
+                                <Text style={style.text_button1}>ข้อมูล</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={style.check}>
+                            <Image source={require('./assets/images/vector.png')} resizeMode='contain' style={{ width: 65, height: 65, marginTop: 7}}/>
+                                <TouchableOpacity style={style.button2}>
+                                    <Text style={style.text_button2}>ตรวจงาน</Text>
+                                </TouchableOpacity>
+                        </View>
+                    </View>
+                )}
+            />
         </SafeAreaView>
     )
 
@@ -34,64 +57,93 @@ const style = StyleSheet.create({
     body: {
         flex: 1,
         backgroundColor: '#8f8f9',
-        justifyContent: 'center',
+    },
+    header: {
+        flexDirection: 'row',
+        alignContent: 'center',
+        height: 50,
     },
     view1: {
+        padding: 15,
         flexDirection: 'row',
-        justifyContent: 'center',
     },
-    view2: {
+    list: {
         flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    view3: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        paddingTop: 20,
-    },
-    view4: {
-        flexDirection: 'column',
-        paddingTop: 30,
-    },
-    view5: {
-        paddingTop: 60,
+        backgroundColor: '#d9d9d9',
         alignItems: 'center',
+        height: 140,
+        margin: 15,
+        borderRadius: 10,
+    },
+    profile: {
+        padding: 10,
+        paddingLeft: 30,
+        alignItems: 'center',
+    },
+    button1: {
+        backgroundColor: '#071952',
+        width: '100%',
+        height: 25,
+        marginTop: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    check: {
+        padding: 10,
+        paddingLeft: 35,
+        alignItems: 'center',
+    },
+    button2: {
+        backgroundColor: '#071952',
+        width: '140%',
+        height: 25,
+        marginTop: 17,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    text1_1: {
+        color: '#000000',
+        fontSize: 14,
+        marginLeft: 20,
+    },
+    text1_2: {
+        color: '#fd0000',
+        fontSize: 14,
+    },
+    text_button1: {
+        color: '#ffffff',
+        fontSize: 14,
+    },
+    text_button2: {
+        color: '#ffffff',
+        fontSize: 14,
+    },
+}
+)
+
+const Style_header = StyleSheet.create({
+    body: {
+        backgroundColor: '#000000',
+        width: '100%',
+        flexDirection: 'row',
+        height: 50,
+    },
+    view1: {
+        flex: 1,
+        alignItems: 'start',
+        justifyContent: 'center',
+    },
+    font: {
+        paddingLeft: 30,
+        fontSize: 18,
+        color: '#000000',
     },
     button: {
-        backgroundColor: '#00ff7f',
-        width: '80%',
-        height: 100,
-        borderRadius: 12,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    text1: {
-        color: '#000000',
-        fontSize: 18,
-        margin: 5,
-        marginTop: 10,
-    },
-    text2_1: {
-        color: '#000000',
-        fontSize: 20,
-        margin: 5,
-    },
-    text2_2: {
-        color: '#000000',
-        fontSize: 18,
-        marginLeft: 50,
-        margin: 10,
-    },
-    text3: {
-        color: '#000000',
-        textAlign: 'center',
-        fontSize: 32,
-    },
-    text_button: {
-        width: '100%',
-        color: '#000000',
-        textAlign: 'center',
-        fontSize: 28,
+        width:50,
+        paddingLeft: 20,
+        justifyContent: 'center'
     },
 }
 )
