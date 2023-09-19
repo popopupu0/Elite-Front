@@ -39,8 +39,11 @@ const App = () => {
                                 <Text style={style.text_button1}>ข้อมูล</Text>
                             </TouchableOpacity>
                         </View>
+                        <View style={style.line}>
+
+                        </View>
                         <View style={style.check}>
-                            <Image source={require('./assets/images/vector.png')} resizeMode='contain' style={{ width: 65, height: 65, marginTop: 7}}/>
+                            <Image source={require('./assets/images/search-alt.png')} resizeMode='contain' style={{ width: 65, height: 65, marginTop: 7}}/>
                                 <TouchableOpacity style={style.button2}>
                                     <Text style={style.text_button2}>ตรวจงาน</Text>
                                 </TouchableOpacity>
@@ -76,27 +79,31 @@ const style = StyleSheet.create({
         borderRadius: 10,
     },
     profile: {
-        padding: 10,
-        paddingLeft: 30,
+        padding: 15,
+        width: '50%',
         alignItems: 'center',
     },
     button1: {
         backgroundColor: '#071952',
-        width: '100%',
+        width: '80%',
         height: 25,
         marginTop: 10,
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
     },
+    line: {
+        height: '88%',
+        borderWidth: 0.75,
+    },
     check: {
-        padding: 10,
-        paddingLeft: 35,
+        padding: 15,
+        width: '50%',
         alignItems: 'center',
     },
     button2: {
         backgroundColor: '#071952',
-        width: '140%',
+        width: '80%',
         height: 25,
         marginTop: 17,
         borderRadius: 5,
